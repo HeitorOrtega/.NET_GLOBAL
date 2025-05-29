@@ -1,0 +1,170 @@
+@page
+@model GS.NET.Pages.Usuarios.CreateModel
+
+@{
+    ViewData["Title"] = "Criar Usuário";
+}
+
+<div class="bg-light vh-100 d-flex align-items-center">
+    <div class="container">
+        <div class="card mx-auto shadow-lg" style="max-width:600px;">
+            <div class="card-header bg-success text-white text-center">
+                <h2>@ViewData["Title"]</h2>
+            </div>
+            <div class="card-body">
+                <form method="post" asp-antiforgery="true" class="needs-validation" novalidate>
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="row g-3">
+                        <!-- Nome -->
+                        <div class="col-12 form-floating">
+                            <input asp-for="Nome"
+                                   class="form-control @(ViewData.ModelState["Nome"]?.Errors.Count>0? "is-invalid":"")"
+                                   placeholder="Nome completo" />
+                            <label asp-for="Nome">Nome completo</label>
+                            <div class="invalid-feedback">
+                                <span asp-validation-for="Nome"></span>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="col-md-6 form-floating">
+                            <input asp-for="Email"
+                                   type="email"
+                                   class="form-control @(ViewData.ModelState["Email"]?.Errors.Count>0? "is-invalid":"")"
+                                   placeholder="usuario@exemplo.com" />
+                            <label asp-for="Email">Email</label>
+                            <div class="invalid-feedback">
+                                <span asp-validation-for="Email"></span>
+                            </div>
+                        </div>
+
+                        <!-- Senha -->
+                        <div class="col-md-6 form-floating">
+                            <input asp-for="Senha"
+                                   type="password"
+                                   class="form-control @(ViewData.ModelState["Senha"]?.Errors.Count>0? "is-invalid":"")"
+                                   placeholder="••••••" />
+                            <label asp-for="Senha">Senha (mín. 6)</label>
+                            <div class="invalid-feedback">
+                                <span asp-validation-for="Senha"></span>
+                            </div>
+                        </div>
+
+                        <!-- CPF -->
+                        <div class="col-md-6 form-floating">
+                            <input asp-for="Cpf"
+                                   class="form-control @(ViewData.ModelState["Cpf"]?.Errors.Count>0? "is-invalid":"")"
+                                   placeholder="00000000000" maxlength="11" />
+                            <label asp-for="Cpf">CPF (11 dígitos)</label>
+                            <div class="invalid-feedback">
+                                <span asp-validation-for="Cpf"></span>
+                            </div>
+                        </div>
+
+                        <!-- CEP -->
+                        <div class="col-md-6 form-floating">
+                            <input asp-for="Cep"
+                                   class="form-control @(ViewData.ModelState["Cep"]?.Errors.Count>0? "is-invalid":"")"
+                                   placeholder="00000000" maxlength="8" />
+                            <label asp-for="Cep">CEP (8 dígitos)</label>
+                            <div class="invalid-feedback">
+                                <span asp-validation-for="Cep"></span>
+                            </div>
+                        </div>
+
+                        <!-- Logradouro -->
+                        <div class="col-12 form-floating">
+                            <input asp-for="Logradouro"
+                                   class="form-control @(ViewData.ModelState["Logradouro"]?.Errors.Count>0? "is-invalid":"")"
+                                   placeholder="Rua, avenida…" />
+                            <label asp-for="Logradouro">Logradouro</label>
+                            <div class="invalid-feedback">
+                                <span asp-validation-for="Logradouro"></span>
+                            </div>
+                        </div>
+
+                        <!-- Número -->
+                        <div class="col-md-4 form-floating">
+                            <input asp-for="Numero"
+                                   class="form-control @(ViewData.ModelState["Numero"]?.Errors.Count>0? "is-invalid":"")"
+                                   placeholder="Número" maxlength="10" />
+                            <label asp-for="Numero">Número</label>
+                            <div class="invalid-feedback">
+                                <span asp-validation-for="Numero"></span>
+                            </div>
+                        </div>
+
+                        <!-- Complemento -->
+                        <div class="col-md-4 form-floating">
+                            <input asp-for="Complemento"
+                                   class="form-control @(ViewData.ModelState["Complemento"]?.Errors.Count>0? "is-invalid":"")"
+                                   placeholder="Apto, bloco (opcional)" />
+                            <label asp-for="Complemento">Complemento</label>
+                            <div class="invalid-feedback">
+                                <span asp-validation-for="Complemento"></span>
+                            </div>
+                        </div>
+
+                        <!-- Bairro -->
+                        <div class="col-md-4 form-floating">
+                            <input asp-for="Bairro"
+                                   class="form-control @(ViewData.ModelState["Bairro"]?.Errors.Count>0? "is-invalid":"")"
+                                   placeholder="Bairro" maxlength="100" />
+                            <label asp-for="Bairro">Bairro</label>
+                            <div class="invalid-feedback">
+                                <span asp-validation-for="Bairro"></span>
+                            </div>
+                        </div>
+
+                        <!-- Cidade -->
+                        <div class="col-md-6 form-floating">
+                            <input asp-for="Cidade"
+                                   class="form-control @(ViewData.ModelState["Cidade"]?.Errors.Count>0? "is-invalid":"")"
+                                   placeholder="Cidade" maxlength="100" />
+                            <label asp-for="Cidade">Cidade</label>
+                            <div class="invalid-feedback">
+                                <span asp-validation-for="Cidade"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-success px-5">Salvar</button>
+                        <a asp-page="./Index" class="btn btn-outline-secondary px-4 ms-3">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- jQuery -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- Validação Unobtrusive -->
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        (function() {
+            'use strict';
+            document.querySelectorAll('.needs-validation').forEach(form => {
+                form.addEventListener('submit', e => {
+                    if (!form.checkValidity()) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                });
+                form.querySelectorAll('input, select').forEach(field => {
+                    field.addEventListener('input', () => {
+                        if (field.checkValidity()) {
+                            field.classList.remove('is-invalid');
+                        }
+                    });
+                });
+            });
+        })();
+    </script>
+}

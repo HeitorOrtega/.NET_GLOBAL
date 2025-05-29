@@ -1,0 +1,69 @@
+@page "{id:long}"
+@model GS.NET.Pages_Usuarios.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalhes do Usuário";
+}
+
+<div class="bg-light vh-100 d-flex align-items-center">
+    <div class="container">
+        <div class="card mx-auto shadow-lg" style="max-width:600px;">
+            <div class="card-header bg-info text-white text-center">
+                <h2>@ViewData["Title"]</h2>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Nome</dt>
+                    <dd class="col-sm-8">@Model.Usuario.Nome</dd>
+
+                    <dt class="col-sm-4">Email</dt>
+                    <dd class="col-sm-8">@Model.Usuario.Email</dd>
+
+                    <dt class="col-sm-4">CPF</dt>
+                    <dd class="col-sm-8">@Model.Usuario.Cpf</dd>
+
+                    <dt class="col-sm-4">Endereço</dt>
+                    <dd class="col-sm-8">
+                        @{
+                            var loc = Model.Usuario.Localizacao;
+                            if (loc != null)
+                            {
+                                var complemento = string.IsNullOrWhiteSpace(loc.Complemento)
+                                    ? ""
+                                    : $" – {loc.Complemento}";
+                                <text>
+                                    @($"{loc.Logradouro}, {loc.Numero}{complemento}, {loc.Bairro}, {loc.Cidade} – SP")
+                                </text>;
+                            }
+                        }
+                    </dd>
+
+                    <dt class="col-sm-4">CEP</dt>
+                    <dd class="col-sm-8">@Model.Usuario.Localizacao?.Cep</dd>
+                </dl>
+                <div class="text-end">
+                    <a asp-page="Edit" asp-route-id="@Model.Usuario.Id" class="btn btn-warning me-2">Editar</a>
+                    <a asp-page="Index" class="btn btn-secondary">Voltar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        (function() {
+            'use strict';
+            document.querySelectorAll('.needs-validation').forEach(form => {
+                form.addEventListener('submit', e => {
+                    if (!form.checkValidity()) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                });
+            });
+        })();
+    </script>
+}

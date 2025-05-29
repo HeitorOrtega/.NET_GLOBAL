@@ -1,0 +1,63 @@
+@page
+@model GS.NET.Pages_Usuarios.IndexModel
+
+@{
+    ViewData["Title"] = "Lista de Usuários";
+}
+
+<div class="bg-light vh-100 d-flex align-items-center">
+    <div class="container">
+        <div class="card mx-auto shadow-lg" style="max-width:800px;">
+            <div class="card-header bg-primary text-white text-center">
+                <h2>@ViewData["Title"]</h2>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped table-hover mb-0 text-center">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>CPF</th>
+                        <th>Endereço</th>
+                        <th>CEP</th>
+                        <th>Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var u in Model.Usuarios)
+                    {
+                        <tr>
+                            <td>@u.Nome</td>
+                            <td>@u.Email</td>
+                            <td>@u.Cpf</td>
+                            <td>
+                                @{
+                                    var loc = u.Localizacao;
+                                    if (loc != null)
+                                    {
+                                        var complemento = string.IsNullOrWhiteSpace(loc.Complemento)
+                                            ? ""
+                                            : $" – {loc.Complemento}";
+                                        <text>
+                                            @($"{loc.Logradouro}, {loc.Numero}{complemento}, {loc.Bairro}, {loc.Cidade} – SP")
+                                        </text>;
+                                    }
+                                }
+                            </td>
+                            <td>@u.Localizacao?.Cep</td>
+                            <td>
+                                <a asp-page="Details" asp-route-id="@u.Id" class="btn btn-sm btn-info me-1">Ver</a>
+                                <a asp-page="Edit"    asp-route-id="@u.Id" class="btn btn-sm btn-warning me-1">Editar</a>
+                                <a asp-page="Delete"  asp-route-id="@u.Id" class="btn btn-sm btn-danger">Excluir</a>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-page="Create" class="btn btn-success px-4">+ Novo Usuário</a>
+            </div>
+        </div>
+    </div>
+</div>
