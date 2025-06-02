@@ -68,6 +68,11 @@ Arquitetura:
 
 5.  Acesse `https://localhost:5030/swagger` para documentação interativa.
 
+6. **URL :**
+   ```bash
+       https://localhost:5030)
+    ```
+
 ---
 
 ## 🚀 Endpoints da API
@@ -162,59 +167,7 @@ Execute dotnet run e abra no navegador:
 https://localhost:5030/swagger
 ```
 
-Clique em cada rota (/v1/Usuarios, /v1/Localizacoes, /v1/Lembretes) e use a seção “Try it out” para testar POST, PUT, GET e DELETE.
-
-Via Insomnia/Postman
-
-Importe as seguintes requisições manualmente ou utilize um collection JSON (se desejar).
-
-Exemplo de Body para cada rota:
-
-Criar Usuário (POST /v1/Usuarios)
-
-```json
-{
-  "nome": "Maria Oliveira",
-  "senha": "minhasenha",
-  "email": "maria@example.com",
-  "cpf": "98765432100"
-}
-Criar Localização (POST /v1/Localizacoes)
-
-json
-Copiar
-Editar
-{
-  "logradouro": "Rua das Palmeiras",
-  "numero": "500",
-  "complemento": null,
-  "bairro": "Jardim das Flores",
-  "cidade": "Campinas",
-  "cep": "13000000"
-}
-Criar Lembrete (POST /v1/Lembretes)
-
-json
-Copiar
-Editar
-{
-  "mensagem": "Verificar nível do rio",
-  "dataHora": "2025-07-15T09:30:00",
-  "usuarioId": 2
-}
-Buscar Todos os Lembretes (GET /v1/Lembretes)
-
-Atualizar Lembrete (PUT /v1/Lembretes/{id})
-
-
-{
-  "mensagem": "Verificar nível do rio – Atenção máxima",
-  "dataHora": "2025-07-15T10:00:00",
-  "usuarioId": 2
-}
-Remover Lembrete (DELETE /v1/Lembretes/{id})
-```
-Todos os exemplos acima assumem que o servidor está rodando em https://localhost:5030/v1.
+- Clique em cada rota (/v1/Usuarios, /v1/Localizacoes, /v1/Lembretes) e use a seção “Try it out” para testar POST, PUT, GET e DELETE.
 
 ---
 
