@@ -38,30 +38,21 @@ Arquitetura:
 
 ## 🛠️ Desenvolvimento
 
-1.  **Clone o repositório**:
+1.  **Clone o repositório** :
    ```bash
    git clone https://github.com/HeitorOrtega/.NET_GLOBAL.git
-   cd GlobalSolution
    ```
 
-2.  **Configure sua string de conexão Oracle em `appsettings.json`**:
+  **Abra o terminal do projeto e:**
 
-    ```json
-    {
-      "ConnectionStrings": {
-        "OracleConnection": "User Id=rm557825;Password=fiap25;Data Source=oracle.fiap.com.br:1521/ORCL;"
-      }
-    }
-    ```
-
-3.  **Crie e aplique as migrations**:
+2.  **Crie e aplique as migrations**:
 
     ```bash
       dotnet ef migrations add InitialCreate
       dotnet ef database update
     ```
 
-4.  **Instale dependências de front-end (jQuery, validação)**:
+3.  **Instale dependências de front-end (jQuery, validação)**:
 
     ```bash
     cd GS.NET
@@ -69,13 +60,13 @@ Arquitetura:
 
     ```
 
-5.  **Rode a aplicação**:
+4.  **Rode a aplicação**:
 
     ```bash
     dotnet run 
     ```
 
-6.  Acesse `https://localhost:5030/swagger` para documentação interativa.
+5.  Acesse `https://localhost:5030/swagger` para documentação interativa.
 
 ---
 
@@ -96,7 +87,7 @@ Arquitetura:
 **Exemplo de `POST /Usuarios`**
 
 ```http
-POST /v1/Usuarios HTTP/1.1
+POST /v1/Usuarios 
 Content-Type: application/json
 
 {
@@ -117,15 +108,19 @@ Content-Type: application/json
 | `PUT`    | `/Lembretes/{id}` | Atualiza lembrete         |
 | `DELETE` | `/Lembretes/{id}` | Remove lembrete           |
 
+**Exemplo de `POST /Lembretes`**
+
 ```http
 
-POST /v1/Lembretes HTTP/1.1
+POST /v1/Lembretes 
 Content-Type: application/json
+
+
 
 {
   "mensagem": "Reunião com equipe",
   "dataHora": "2025-06-01T14:00:00",
-  "usuarioId": 1
+  "usuarioId": 1 "    (obs chamar um ID existente no projeto para criar um lembrete)"
 }
 ```
 
@@ -140,10 +135,12 @@ Content-Type: application/json
 | `DELETE` | `/Localizacoes/{id}` | Remove localização          |
 
 
-**POST /v1/Localizacoes HTTP/1.1**
-Content-Type: application/json
+**Exemplo de `POST /Localizacoes`**
+
 
 ```http
+POST /v1/Localizacoes
+Content-Type: application/json
 {
   "logradouro": "Av. Paulista",
   "numero": "1000",
