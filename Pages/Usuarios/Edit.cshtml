@@ -12,9 +12,9 @@
         </div>
         <div class="card-body">
             <form method="post" class="needs-validation" novalidate>
-                @* Campos idênticos ao Create *@
-                <!-- Nome, Email, Senha, CPF, Localização -->
-                @await Html.PartialAsync("_UsuarioForm", Model.Usuario)
+                @* Em vez de Model.Usuario, uso Model.Input *@
+                @await Html.PartialAsync("_UsuarioForm", Model.Input)
+
                 <div class="d-flex justify-content-end mt-4">
                     <button type="submit" class="btn btn-warning me-2">Atualizar</button>
                     <a asp-page="./Index" class="btn btn-outline-secondary">Cancelar</a>
@@ -36,6 +36,13 @@
                         e.stopPropagation();
                     }
                     form.classList.add('was-validated');
+                });
+                form.querySelectorAll('input, select').forEach(field => {
+                    field.addEventListener('input', () => {
+                        if (field.checkValidity()) {
+                            field.classList.remove('is-invalid');
+                        }
+                    });
                 });
             });
         })();

@@ -19,7 +19,6 @@ namespace GS.NET.ViewModels
         [Required, StringLength(8, MinimumLength = 8, ErrorMessage = "O CEP deve ter exatamente 8 dígitos")]
         public string Cep { get; set; } = string.Empty;
 
-
         [Required, StringLength(150)]
         public string Logradouro { get; set; } = string.Empty;
 

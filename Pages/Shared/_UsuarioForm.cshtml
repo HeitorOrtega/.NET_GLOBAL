@@ -1,0 +1,105 @@
+﻿@model GS.NET.ViewModels.UsuarioInputModel
+
+<div class="row g-3">
+    <div class="col-12 form-floating">
+        <input asp-for="Nome"
+               class="form-control @(ViewData.ModelState[nameof(Model.Nome)]?.Errors.Count > 0 ? "is-invalid" : "")"
+               placeholder="Nome completo" />
+        <label asp-for="Nome">Nome completo</label>
+        <div class="invalid-feedback">
+            @ViewData.ModelState[nameof(Model.Nome)]?.Errors.FirstOrDefault()?.ErrorMessage
+        </div>
+    </div>
+
+    <div class="col-md-6 form-floating">
+        <input asp-for="Email"
+               type="email"
+               class="form-control @(ViewData.ModelState[nameof(Model.Email)]?.Errors.Count > 0 ? "is-invalid" : "")"
+               placeholder="usuario@exemplo.com" />
+        <label asp-for="Email">Email</label>
+        <div class="invalid-feedback">
+            @ViewData.ModelState[nameof(Model.Email)]?.Errors.FirstOrDefault()?.ErrorMessage
+        </div>
+    </div>
+
+    <div class="col-md-6 form-floating">
+        <input asp-for="Senha"
+               type="password"
+               class="form-control @(ViewData.ModelState[nameof(Model.Senha)]?.Errors.Count > 0 ? "is-invalid" : "")"
+               placeholder="••••••" />
+        <label asp-for="Senha">Senha (mín. 6)</label>
+        <div class="invalid-feedback">
+            @ViewData.ModelState[nameof(Model.Senha)]?.Errors.FirstOrDefault()?.ErrorMessage
+        </div>
+    </div>
+
+    <div class="col-md-6 form-floating">
+        <input asp-for="Cpf"
+               class="form-control @(ViewData.ModelState[nameof(Model.Cpf)]?.Errors.Count > 0 ? "is-invalid" : "")"
+               placeholder="00000000000" maxlength="11" />
+        <label asp-for="Cpf">CPF (11 dígitos)</label>
+        <div class="invalid-feedback">
+            @ViewData.ModelState[nameof(Model.Cpf)]?.Errors.FirstOrDefault()?.ErrorMessage
+        </div>
+    </div>
+
+    <div class="col-md-6 form-floating">
+        <input asp-for="Cep"
+               class="form-control @(ViewData.ModelState[nameof(Model.Cep)]?.Errors.Count > 0 ? "is-invalid" : "")"
+               placeholder="00000000" maxlength="8" />
+        <label asp-for="Cep">CEP (8 dígitos)</label>
+        <div class="invalid-feedback">
+            @ViewData.ModelState[nameof(Model.Cep)]?.Errors.FirstOrDefault()?.ErrorMessage
+        </div>
+    </div>
+
+    <div class="col-12 form-floating">
+        <input asp-for="Logradouro"
+               class="form-control @(ViewData.ModelState[nameof(Model.Logradouro)]?.Errors.Count > 0 ? "is-invalid" : "")"
+               placeholder="Rua, avenida…" />
+        <label asp-for="Logradouro">Logradouro</label>
+        <div class="invalid-feedback">
+            @ViewData.ModelState[nameof(Model.Logradouro)]?.Errors.FirstOrDefault()?.ErrorMessage
+        </div>
+    </div>
+
+    <div class="col-md-4 form-floating">
+        <input asp-for="Numero"
+               class="form-control @(ViewData.ModelState[nameof(Model.Numero)]?.Errors.Count > 0 ? "is-invalid" : "")"
+               placeholder="Número" maxlength="10" />
+        <label asp-for="Numero">Número</label>
+        <div class="invalid-feedback">
+            @ViewData.ModelState[nameof(Model.Numero)]?.Errors.FirstOrDefault()?.ErrorMessage
+        </div>
+    </div>
+
+    <div class="col-md-4 form-floating">
+        <input asp-for="Complemento"
+               class="form-control @(ViewData.ModelState[nameof(Model.Complemento)]?.Errors.Count > 0 ? "is-invalid" : "")"
+               placeholder="Apto, bloco (opcional)" />
+        <label asp-for="Complemento">Complemento</label>
+        <div class="invalid-feedback">
+            @ViewData.ModelState[nameof(Model.Complemento)]?.Errors.FirstOrDefault()?.ErrorMessage
+        </div>
+    </div>
+
+    <div class="col-md-4 form-floating">
+        <input asp-for="Bairro"
+               class="form-control @(ViewData.ModelState[nameof(Model.Bairro)]?.Errors.Count > 0 ? "is-invalid" : "")"
+               placeholder="Bairro" maxlength="100" />
+        <label asp-for="Bairro">Bairro</label>
+        <div class="invalid-feedback">
+            @ViewData.ModelState[nameof(Model.Bairro)]?.Errors.FirstOrDefault()?.ErrorMessage
+        </div>
+    </div>
+
+    <div class="col-md-6 form-floating">
+        <input asp-for="Cidade"
+               class="form-control @(ViewData.ModelState[nameof(Model.Cidade)]?.Errors.Count > 0 ? "is-invalid" : "")"
+               placeholder="Cidade" maxlength="100" />
+        <label asp-for="Cidade">Cidade</label>
+        <div class="invalid-feedback">
+            @ViewData.ModelState[nameof(Model.Cidade)]?.Errors.FirstOrDefault()?.ErrorMessage
+        </div>
+    </div>
+</div>
