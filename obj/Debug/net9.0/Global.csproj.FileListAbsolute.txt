@@ -270,8 +270,6 @@ C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\Global.Ra
 C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\Global.RazorAssemblyInfo.cs
 C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\Global.sourcelink.json
 C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\scopedcss\bundle\Global.styles.css
-C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\compressed\t6ju1gxf1d-b7iojwaux1.gz
-C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\compressed\xznud4tc7n-dd6z7egasc.gz
 C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\staticwebassets.development.json
@@ -282,3 +280,7 @@ C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\refint\Gl
 C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\Global.pdb
 C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\Global.genruntimeconfig.cache
 C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\ref\Global.dll
+C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\compressed\t6ju1gxf1d-l1zq2mitth.gz
+C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\compressed\xznud4tc7n-ehgnz7f14e.gz
+C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\bin\Debug\net9.0\Global.xml
+C:\Users\heito\OneDrive\Área de Trabalho\.NET_GLOBAL\obj\Debug\net9.0\Global.xml
