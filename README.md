@@ -1,40 +1,55 @@
-# Global Solution API
+Tema: Monitoramento Inteligente e Prevenção de Riscos (enchentes, furacões)
 
-Este projeto é uma **API REST** para gestão de **usuários**, **localizações** e **lembretes**, construída em **.NET 9** com **ASP.NET Core** e **Entity Framework Core (Oracle)**.
+Tecnologias:
 
----
+- .NET 9 / C# 12
 
-## 👁️ Visão Geral
+- ASP.NET Core (Controllers + Razor Pages)
 
-* **Tecnologias**: .NET 9, ASP.NET Core, Entity Framework Core, Oracle, Swashbuckle (Swagger UI), Razor Pages (UI)
-* **Arquitetura**: API em camadas com Controllers, DTOs, Services e Repositórios (EF Core).
-* **Relacionamentos**: `1:N` entre `Usuario` e `Lembrete`, `1:N` entre `Localizacao` e `Usuario`.
+- Entity Framework Core (Oracle.ManagedDataAccess)
+
+- Swagger (Swashbuckle) para documentação e testes interativos
+
+- jQuery + jQuery Validate + jQuery Unobtrusive Validation para validações no front-end Razor
+
+Arquitetura:
+
+- Camada de API (Controllers e DTOs)
+
+- Camada de Dados (Entity Framework Core e AppDbContext)
+
+- Camada de Front-end (Razor Pages + TagHelpers + Bootstrap)
+
+- Relacionamentos principais no banco:
+
+- Usuário (Usuario) – 1:N – Lembrete (Lembrete)
+
+- Localização (Localizacao) – 1:N – Usuário (Usuario)
 
 ---
 
 ## 📐 Diagrama de Classes
 
-(User) 1 --- \* (Lembrete)
-(Localizacao) 1 --- \* (Usuario)
-(Substitua pelo diagrama UML gerado ou adicione uma imagem aqui.)
+![image](https://github.com/user-attachments/assets/cae3b5a6-3161-4add-ad6b-c5ca71bcdfd1)
+
+
 
 ---
 
 ## 🛠️ Desenvolvimento
 
 1.  **Clone o repositório**:
-
-    ```bash
-    git clone https://github.com/HeitorOrtega/.NET_GLOBAL.git
-    cd GlobalSolution
-    ```
+   ```bash
+   git clone https://github.com/HeitorOrtega/.NET_GLOBAL.git
+   cd GlobalSolution
+   ```
 
 2.  **Configure sua string de conexão Oracle em `appsettings.json`**:
 
     ```json
     {
       "ConnectionStrings": {
-        "OracleConnection": "User Id=RM557825;Password=fiap25;Data Source=//host:1521/ORCL"
+        "OracleConnection": "User Id=rm557825;Password=fiap25;Data Source=oracle.fiap.com.br:1521/ORCL;"
       }
     }
     ```
@@ -42,21 +57,22 @@ Este projeto é uma **API REST** para gestão de **usuários**, **localizações
 3.  **Crie e aplique as migrations**:
 
     ```bash
-    dotnet ef migrations add Initial
-    dotnet ef database update
+      dotnet ef migrations add InitialCreate
+      dotnet ef database update
     ```
 
 4.  **Instale dependências de front-end (jQuery, validação)**:
 
     ```bash
-    cd gs.net
+    cd GS.NET
     libman restore
+
     ```
 
 5.  **Rode a aplicação**:
 
     ```bash
-    dotnet run --project GS.NET
+    dotnet run 
     ```
 
 6.  Acesse `https://localhost:5030/swagger` para documentação interativa.
@@ -140,21 +156,117 @@ Content-Type: application/json
 
 ---
 
-### ✅ Testes
+✅ Testes
+Via Swagger UI
 
-- Utilize o Swagger UI (/swagger) para testar interativamente.
-- Exemplos de requisições estão disponíveis nas seções acima.
-- Você pode usar Insomnia ou Postman, importando o collection JSON.
+Execute dotnet run e abra no navegador:
+
+```bash
+https://localhost:5030/swagger
+```
+
+Clique em cada rota (/v1/Usuarios, /v1/Localizacoes, /v1/Lembretes) e use a seção “Try it out” para testar POST, PUT, GET e DELETE.
+
+Via Insomnia/Postman
+
+Importe as seguintes requisições manualmente ou utilize um collection JSON (se desejar).
+
+Exemplo de Body para cada rota:
+
+Criar Usuário (POST /v1/Usuarios)
+
+```json
+{
+  "nome": "Maria Oliveira",
+  "senha": "minhasenha",
+  "email": "maria@example.com",
+  "cpf": "98765432100"
+}
+Criar Localização (POST /v1/Localizacoes)
+
+json
+Copiar
+Editar
+{
+  "logradouro": "Rua das Palmeiras",
+  "numero": "500",
+  "complemento": null,
+  "bairro": "Jardim das Flores",
+  "cidade": "Campinas",
+  "cep": "13000000"
+}
+Criar Lembrete (POST /v1/Lembretes)
+
+json
+Copiar
+Editar
+{
+  "mensagem": "Verificar nível do rio",
+  "dataHora": "2025-07-15T09:30:00",
+  "usuarioId": 2
+}
+Buscar Todos os Lembretes (GET /v1/Lembretes)
+
+Atualizar Lembrete (PUT /v1/Lembretes/{id})
+
+
+{
+  "mensagem": "Verificar nível do rio – Atenção máxima",
+  "dataHora": "2025-07-15T10:00:00",
+  "usuarioId": 2
+}
+Remover Lembrete (DELETE /v1/Lembretes/{id})
+```
+Todos os exemplos acima assumem que o servidor está rodando em https://localhost:5030/v1.
 
 ---
 
-### 📂 Pasta de Front‑end (Razor + jQuery)
-- As Pages Razor para CRUD de usuários estão localizadas em GS.NET/Pages/Usuarios/*.cshtml.
-- As validações são realizadas via jQuery Validate e unobtrusive validation.
+📂 Front-end Razor + jQuery
+Dentro da pasta GS.NET/Pages/Usuarios, existem as seguintes páginas:
+
+Index.cshtml
+
+Lista todos os usuários e exibe colunas de Dados Pessoais e Endereço completo (Rua, Número, Bairro, Cidade, Estado).
+
+Ações: [Ver] [Editar] [Excluir].
+
+Create.cshtml
+
+Formulário para criar um novo usuário + endereço associado.
+
+Campos: Nome, Email, Senha, CPF, CEP, Logradouro, Número, Complemento (opcional), Bairro, Cidade.
+
+Validações client-side via:
+
+<input asp-for="Cep" class="form-control @(ViewData.ModelState["Cep"]?.Errors.Count > 0 ? "is-invalid" : "")" />
+```http
+<div class="invalid-feedback">
+  <span asp-validation-for="Cep"></span>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+
+```
+
+Edit.cshtml
+
+Formulário semelhante ao Create, porém pré-preenchido com os dados do usuário e endereço atual.
+
+Usa um Partial chamado _UsuarioForm.cshtml para reaproveitar markup de campos (deve estar em /Pages/Shared/_UsuarioForm.cshtml ou /Pages/Usuarios/_UsuarioForm.cshtml).
+
+Delete.cshtml 
+
+Página de confirmação de exclusão.
+
+---
+
 
 ### 🧾 Licença
 MIT © Heitor Ortega
 
 ## Integrantes
+- Heitor Ortega - 557825
 - Pedro Saraiva - 555160
 - Marcos Lourenço - 556496
