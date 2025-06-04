@@ -70,7 +70,7 @@ Arquitetura:
 
 6. **URL :**
    ```bash
-       https://localhost:5030)
+       https://localhost:5030
     ```
 
 ---
@@ -120,15 +120,25 @@ Content-Type: application/json
 POST /v1/Lembretes 
 Content-Type: application/json
 
-
-
 {
   "mensagem": "Reunião com equipe",
   "dataHora": "2025-06-01T14:00:00",
-  "usuarioId": 1 "    (obs chamar um ID existente no projeto para criar um lembrete)"
+  "usuarioId": 1     "(obs chamar um ID existente no projeto para criar um lembrete)"
 }
 ```
+Para modificar um lembrete já cadastrado, envie uma requisição PUT com o id do lembrete na URL e os dados atualizados no corpo:
+```http
 
+
+PUT /v1/lembretes/22
+Content-Type: application/json
+
+{
+  "mensagem": "Novo alerta de furacão – evacuação em 12h",
+  "dataHora": "2025-06-06T08:30:00",
+  "usuarioId": 1  "(Usuario existente)"
+}
+```
 ### Localizações
 
 | Método   | Rota                 | Descrição                   |
@@ -172,6 +182,9 @@ https://localhost:5030/swagger
 ---
 
 📂 Front-end Razor + jQuery
+
+https://localhost:5030/Usuarios
+
 Dentro da pasta GS.NET/Pages/Usuarios, existem as seguintes páginas:
 
 Index.cshtml
