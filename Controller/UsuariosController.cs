@@ -1,5 +1,4 @@
-﻿// Controllers/UsuariosController.cs
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GlobalSolution.Data;
 using GlobalSolution.Models;

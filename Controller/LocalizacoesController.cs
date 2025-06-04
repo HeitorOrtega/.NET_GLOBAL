@@ -14,7 +14,6 @@ namespace GlobalSolution.Controllers
         private readonly AppDbContext _ctx;
         public LocalizacoesController(AppDbContext ctx) => _ctx = ctx;
 
-        // GET v1/localizacoes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<LocalizacaoDTO>>> GetAll()
         {
@@ -35,7 +34,6 @@ namespace GlobalSolution.Controllers
             return Ok(lista);
         }
 
-        // GET v1/localizacoes/5
         [HttpGet("{id:long}")]
         public async Task<ActionResult<LocalizacaoDTO>> GetById(long id)
         {
@@ -58,7 +56,6 @@ namespace GlobalSolution.Controllers
             return Ok(loc);
         }
 
-        // POST v1/localizacoes
         [HttpPost]
         public async Task<ActionResult<LocalizacaoDTO>> Create([FromBody] CreateLocalizacaoDTO dto)
         {
@@ -86,7 +83,6 @@ namespace GlobalSolution.Controllers
             return CreatedAtAction(nameof(GetById), new { id = loc.Id }, result);
         }
 
-        // PUT v1/localizacoes/5
         [HttpPut("{id:long}")]
         public async Task<IActionResult> Update(long id, [FromBody] UpdateLocalizacaoDTO dto)
         {
@@ -107,7 +103,6 @@ namespace GlobalSolution.Controllers
             return NoContent();
         }
 
-        // DELETE v1/localizacoes/5
         [HttpDelete("{id:long}")]
         public async Task<IActionResult> Delete(long id)
         {

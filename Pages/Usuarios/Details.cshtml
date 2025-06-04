@@ -28,18 +28,22 @@
                             var loc = Model.Usuario.Localizacao;
                             if (loc != null)
                             {
-                                var complemento = string.IsNullOrWhiteSpace(loc.Complemento)
-                                    ? ""
-                                    : $" – {loc.Complemento}";
-                                <text>
-                                    @($"{loc.Logradouro}, {loc.Numero}{complemento}, {loc.Bairro}, {loc.Cidade} – SP")
-                                </text>;
+                                var complemento = string.IsNullOrWhiteSpace(loc.Complemento) ? "" : $" – {loc.Complemento}";
+                                var enderecoCompleto = $"{loc.Logradouro}, {loc.Numero}{complemento}, {loc.Bairro}, {loc.Cidade} – SP";
+                                @enderecoCompleto
+                            }
+                            else
+                            {
+                                <text>Endereço não informado</text>
                             }
                         }
                     </dd>
 
                     <dt class="col-sm-4">CEP</dt>
-                    <dd class="col-sm-8">@Model.Usuario.Localizacao?.Cep</dd>
+                    <dd class="col-sm-8">
+                        @Model.Usuario.Localizacao?.Cep     
+                    </dd>
+
                 </dl>
                 <div class="text-end">
                     <a asp-page="Edit" asp-route-id="@Model.Usuario.Id" class="btn btn-warning me-2">Editar</a>
@@ -53,7 +57,7 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
     <script>
-        (function() {
+        (function () {
             'use strict';
             document.querySelectorAll('.needs-validation').forEach(form => {
                 form.addEventListener('submit', e => {

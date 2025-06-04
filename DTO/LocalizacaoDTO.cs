@@ -3,7 +3,7 @@
     public class LocalizacaoDTO
     {
         public long    Id          { get; set; }
-        public string? Logradouro  { get; set; }  // agora opcional no DTO
+        public string? Logradouro  { get; set; }  
         public string? Numero      { get; set; }
         public string? Complemento { get; set; }
         public string? Bairro      { get; set; }

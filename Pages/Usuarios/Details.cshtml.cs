@@ -12,9 +12,9 @@ namespace GS.NET.Pages_Usuarios
 {
     public class DetailsModel : PageModel
     {
-        private readonly GlobalSolution.Data.AppDbContext _context;
+        private readonly AppDbContext _context;
 
-        public DetailsModel(GlobalSolution.Data.AppDbContext context)
+        public DetailsModel(AppDbContext context)
         {
             _context = context;
         }
@@ -28,12 +28,13 @@ namespace GS.NET.Pages_Usuarios
                 return NotFound();
             }
 
-            var usuario = await _context.Usuario.FirstOrDefaultAsync(m => m.Id == id);
+            var usuario = await _context.Usuario
+                .Include(u => u.Localizacao)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (usuario is not null)
             {
                 Usuario = usuario;
-
                 return Page();
             }
 

@@ -15,4 +15,7 @@ public class CreateUsuarioDTO
 
     [Required, StringLength(11, MinimumLength = 11)]
     public string Cpf { get; set; } = null!;
+
+    [Required]
+    public long LocalizacaoId { get; set; }  
 }

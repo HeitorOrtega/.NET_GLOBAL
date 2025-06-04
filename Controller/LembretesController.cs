@@ -48,7 +48,6 @@ namespace GlobalSolution.Controllers
             return Ok(lemb);
         }
 
-        // POST v1/lembrentes
         [HttpPost]
         [HttpPost]
         public async Task<ActionResult<LembreteDTO>> Create([FromBody] CreateLembreteDTO dto)
@@ -78,7 +77,6 @@ namespace GlobalSolution.Controllers
         }
 
 
-        // PUT v1/lembrentes/5
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateLembreteDTO dto)
         {
@@ -96,7 +94,6 @@ namespace GlobalSolution.Controllers
             return NoContent();
         }
 
-        // DELETE v1/lembrentes/5
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
